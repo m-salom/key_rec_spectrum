@@ -1,0 +1,10 @@
+#!/bin/bash
+
+target=synd_attack
+
+if test "$#" -ge 2; then
+    target=$2
+fi
+
+cmake --build $1/ --target $target
+

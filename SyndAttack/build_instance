@@ -1,0 +1,47 @@
+#!/bin/bash
+
+name=0
+r=12323
+d=71
+t=134
+level=0
+
+while getopts l:r:d:t:n:k flag
+do
+    case "${flag}" in
+        l) level=${OPTARG};;
+        r) r=${OPTARG};;
+        d) d=${OPTARG};;
+        t) t=${OPTARG};;
+        n) name=${OPTARG};;
+    esac
+done
+
+if [ $level == 1 ]
+then
+    name=nist$level/
+    cmake -B $name/ -DNIST=$level
+    r=12323
+    d=71
+    t=134
+elif [ $level == 3 ]
+then
+    name=nist$level/
+    cmake -B $name/ -DNIST=$level
+    r=24659
+    d=103
+    t=199
+elif [ $level == 5 ]
+then
+    name=nist$level/
+    cmake -B $name/ -DNIST=$level
+    r=40973
+    d=137
+    t=264
+else
+    if [ $name == 0 ]
+    then
+	name="bike"$t-$r
+    fi
+    cmake -B $name/ -DBLOCK_LENGTH=$r -DBLOCK_WEIGHT=$d -DERROR_WEIGHT=$t
+fi
