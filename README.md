@@ -31,7 +31,7 @@ Compile with distance multiplicity
 
 ### Example
 
-    ./keyrec 12323 71 10000 7899876 both 70 1
+    ./keyrec 12323 71 10 7899876 both 90 10
     
 ---
 
@@ -60,6 +60,20 @@ By default, instance is created in `bike134-12323/` :
   - `soft` — key reconstruction from a soft spectrum
   - `both`
 
-### Example
+### Examples
+
+    ./bike134-12323/synd_attack -v 3 -l -N 300000 -m soft
+
+Average running time for this example: 70 seconds, probability of success: 0.95
+
+    ./bike134-12323/synd_attack -v 3 -l -N 200000 -n 10 -m soft
+
+Average running time for this example: 205 seconds, probability of success: 0.5
 
     ./bike134-12323/synd_attack -v 3 -l -N 280000 -n 30 -m soft
+
+Average running time for this example: 259 seconds, probability of success: 0.5
+
+    ./bike134-12323/synd_attack -v 3 -l -N 400000 -n 50 -m soft
+
+Average running time for this example: 304 seconds, probability of success: 0.5
